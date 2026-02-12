@@ -23,7 +23,7 @@ function AddUser() {
     const [emailError, setEmailError] = useState(false);
 
     useEffect(() => {
-        axios.get("https://curd-backend-oxyd.onrender.com/test", { withCredentials: true })
+        axios.get("/test", { withCredentials: true })
             .then(res => setUser(res.data))
             .catch(() => setUser(null));
     }, []);
@@ -42,7 +42,7 @@ function AddUser() {
         setLoading(true);
 
         try {
-            const response = await axios.post("https://curd-backend-oxyd.onrender.com/add-user", formData, { withCredentials: true });
+            const response = await axios.post("/add-user", formData, { withCredentials: true });
 
             toast.success(response.data.message || "User created successfully!");
 

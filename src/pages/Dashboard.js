@@ -12,7 +12,7 @@ export default function Dashboard() {
 
     // 1️⃣ Check if user is logged in (unchanged)
     useEffect(() => {
-        axios.get("https://curd-backend-oxyd.onrender.com/test", { withCredentials: true })
+        axios.get("/test", { withCredentials: true })
             .then(res => {
                 setUser(res.data);
                 console.log(res.data.name);
@@ -27,7 +27,7 @@ export default function Dashboard() {
     // 2️⃣ Fetch products only if user exists (kept but not used in UI)
     useEffect(() => {
         if (!user) return;
-        axios.get("https://curd-backend-oxyd.onrender.com/get/allproducts")
+        axios.get("/get/allproducts")
             .then(res => {
                 setProducts(Array.isArray(res.data) ? res.data : []);
             })
